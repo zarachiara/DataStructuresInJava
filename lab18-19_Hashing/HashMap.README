@@ -1,0 +1,16 @@
+HashMap.README
+
+cs61bl-og 
+cs61bl-jh
+
+In a HashMap.README file, answer the following questions regarding your experiment and your HashMap implementation (which you started in lab18):
+
+HashMap Implementation: How did you calulate the new size of your internal array when the HashMap exceeded the load factor? Why?
+1. When the HashMap exceeded the load facter, the method public int calculateNewSize returns twice the size of the arraySize to provide more empty slots.  We multiplied by a factor of 2 to the current arraySize so that we dont have to resize the hash as frequent as oppose to adding a certain constant.  Also, since the items are now more spread out, it is quicker to obtain objects since collision will less likely occur. 
+
+HashMap Implementation: How did you resolve collisions? Why did you choose this strategy?
+1. In order to resolve collisions, we created a LinkedList<HashItem>[] bucket that adds an element in the array whenever an item collides with another item in the same Hash Array.  In this case, we are able to chain similar items in the same hash array without overwriting.  
+
+Experiment: On average, given an internal array size of 365, how many random integers were you able to add before a collision occurred?
+
+Given an array size of 365, and 10000 times our collision method is called, the average rate of collision occurs at 23 random integer items before a collision occured.  Our collision method tracks how many items are being put to a HashMap, called item, before a collision occurs.  We discovered that running our collission method once does not give us an accurate average, ranging from 18 to 30 items before collision. Calling 10000 seemed to be the most stable amount of calls at 23 random integer items. 
